@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>rh.demo</groupId>
+    <artifactId>eventservice</artifactId>
+    <version>1.0</version>
+
+    <properties>
+        <spring-boot.version>1.5.8.RELEASE</spring-boot.version>
+        <fabric8.version>2.2.170.redhat-000013</fabric8.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <fabric8.maven.plugin.version>3.1.80.redhat-000013</fabric8.maven.plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-project-bom-camel-spring-boot</artifactId>
+                <version>${fabric8.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Camel -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Kafka -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-kafka-starter</artifactId>
+        </dependency>
+
+        <!-- Websockets -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-websocket-starter</artifactId>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+
+    
+</project>
